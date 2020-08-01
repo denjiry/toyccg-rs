@@ -1,3 +1,5 @@
+use lindera::tokenizer::Tokenizer;
+
 #[cfg(test)]
 mod tests {
     #[test]
