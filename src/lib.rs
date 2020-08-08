@@ -4,15 +4,15 @@ use lindera::tokenizer::Tokenizer;
 mod tests {
     use crate::*;
     #[test]
-    fn it_works() {
-        if let Ok(parsed) = parse("日常的な推論でも、数学的に証明できるはずである。")
-        {
-            assert!(parsed.len() > 0);
+    fn test_tokenize() {
+        let test_str = "日常的な推論でも、数学的に証明できるはずである。";
+        if let Ok(tokenized) = tokenize(test_str) {
+            assert!(tokenized.len() > 0);
         }
     }
 }
 
-pub fn parse(ja: &str) -> std::io::Result<Vec<String>> {
+pub fn tokenize(ja: &str) -> std::io::Result<Vec<String>> {
     let mut tokenizer = Tokenizer::new("normal", "");
     let tokens = tokenizer.tokenize(&ja);
     let mut ret: Vec<String> = Vec::new();
