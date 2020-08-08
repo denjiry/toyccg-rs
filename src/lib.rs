@@ -25,9 +25,9 @@ mod tests {
 pub fn build_chart(tokens: Vec<String>) -> Vec<Vec<String>> {
     let chart_size = tokens.len();
     let mut chart = vec![vec![String::new(); chart_size]; chart_size];
-    for n in 0..chart_size {
-        for m in n..chart_size {
-            chart[n][m] = "a".to_string();
+    for (n, chart_row) in chart.iter_mut().enumerate().take(chart_size) {
+        for cell in chart_row.iter_mut().take(chart_size).skip(n) {
+            *cell = "a".to_string();
         }
     }
     chart
