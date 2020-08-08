@@ -11,11 +11,14 @@ mod tests {
         }
     }
     #[test]
-    fn test_buildChart() {
+    fn test_build_chart() {
         let test_str = "日常的な推論でも、数学的に証明できるはずである。";
-        let Ok(tokenized) = tokenize(test_str);
-        let chart = build_chart(tokenized);
-        assert_eq!(chart.len(), tokenized.len());
+        if let Ok(tokenized) = tokenize(test_str) {
+            let tokenized_length = tokenized.len();
+            let chart = build_chart(tokenized);
+            assert_eq!(chart.len(), tokenized_length);
+            // assert_eq!(chart[0][0], "a".to_string());
+        }
     }
 }
 
