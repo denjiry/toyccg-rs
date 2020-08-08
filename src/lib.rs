@@ -1,4 +1,4 @@
-use lindera::tokenizer::Tokenizer;
+use lindera::tokenizer::{Token, Tokenizer};
 
 #[cfg(test)]
 mod tests {
@@ -12,9 +12,9 @@ mod tests {
     }
 }
 
-pub fn parse(ja: &str) -> std::io::Result<Vec<String>> {
+pub fn parse<'a>(ja: &'a str) -> std::io::Result<Vec<String>> {
     let mut tokenizer = Tokenizer::new("normal", "");
-    let tokens = tokenizer.tokenize(&ja);
+    let tokens: Vec<Token<'a>> = tokenizer.tokenize(&ja);
     let mut ret: Vec<String> = Vec::new();
     for token in tokens {
         ret.push(token.text.to_string());
